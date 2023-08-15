@@ -1,8 +1,12 @@
 
 import React, { useState } from 'react';
-import { View, Text, TextInput, ScrollView, Image, StyleSheet } from 'react-native';
+import { View, Text, TextInput, ScrollView, Image, StyleSheet, Button } from 'react-native';
+//import { Button } from 'react-native-web';
 
 const App = () => {
+  const showAlert = () =>{
+    window.alert('Dados Enviados')};
+
   const [matricula, setMatricula] = useState('');
   const [nome, setNome] = useState('');
   const [logradouro, setLogradouro] = useState('');
@@ -11,10 +15,6 @@ const App = () => {
   const [cep, setCep] = useState('');
   const [cidade, setCidade] = useState('');
   const [uf, setUf] = useState('');
-
-  const matInteira = () => {
-    setMat(parseInt(matricula))
-  }
 
   // Essa função remove quaisquer caracter que não seja número
   const handleMatriculaChange = (text) => {
@@ -42,16 +42,16 @@ const App = () => {
 
   const equipe = [
     { nome: 'Jenifer Carvalho', matricula: '202103406734' },
-    { nome: 'Lucas França', matricula: '202102286115' },
+    { nome: 'Lucas de França', matricula: '202102286115' },
     { nome: 'Wagner Mesquita', matricula: '202003315338' },
 
   ];
 
+
   return (
     <View style={styles.container}>
-      <Text style={styles.empresa}>JLW Company</Text>
 
-      <Image source={require('./imagens/logo.jpg')} style={styles.logo} />
+      <Image source={require('./imagens/jlw2.jpg')} style={styles.jlw} />
       <Text style={styles.label}>Cadastramento de Clientes</Text>
       
       <TextInput
@@ -115,8 +115,10 @@ const App = () => {
         onChangeText={setUf}
         style={styles.input}
       />
+      
+      <Button title="Enviar" onPress={showAlert}/>
 
-      <Text>Membros do Trabalho</Text>
+      <Text><br/>Membros do Trabalho</Text>
 
       <ScrollView style={styles.scrollView}>
         {equipe.map((membro, index) => (
@@ -135,18 +137,13 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     alignItems: 'center',
+    backgroundColor: 'white',
   },
-  empresa: {
-    
-    fontSize: 40,
-    fontWeight: 'normal',
-    marginTop: 30,
-  
-  },
-  logo: {
+
+  jlw: {
     marginTop: 20,
-    width: 100,
-    height: 100,
+    width: 250,
+    height: 55,
     marginBottom: 10,
   },
   label: {
